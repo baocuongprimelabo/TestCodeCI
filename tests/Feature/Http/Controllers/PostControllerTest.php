@@ -24,7 +24,7 @@ class PostControllerTest extends TestCase
     public function testIndexWithoutAuth()
     {
         $response = $this->getJson('api/posts');
-        $response->assertStatus(401);
+        $response->assertStatus(401) ;
     }
 
     /**
