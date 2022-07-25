@@ -360,7 +360,7 @@ class PostControllerTest extends TestCase
                 ],
                 [
                     'title' => [
-                        'The title field is required. bị sai'
+                        'The title field is required.'
                     ],
                 ]
             ],
