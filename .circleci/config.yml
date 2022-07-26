@@ -12,10 +12,18 @@ jobs:
           MYSQL_ROOT_PASSWORD: 
     steps:
       - checkout
-      - run: cp .env.example .env
+      - run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+      - run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+      - run: chmod -R 777 storage bootstrap/cache
       # run test
       - run: php artisan key:generate
+      - run: mkdir -p database
+      - run:  touch database/database.sqlite
+      - env:
+        DB_CONNECTION: sqlite
+        DB_DATABASE: database/database.sqlite
       - run: php artisan migrate --seed
+      - run: php artisan test --testsuite=Feature
       - run:
           name: Check PhpUnit
           command: ./vendor/bin/phpunit
