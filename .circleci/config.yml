@@ -19,9 +19,7 @@ jobs:
       - run: php artisan key:generate
       - run: mkdir -p database
       - run:  touch database/database.sqlite
-      - env:
-        DB_CONNECTION: sqlite
-        DB_DATABASE: database/database.sqlite
+
       - run: php artisan migrate --seed
       - run: php artisan test --testsuite=Feature
       - run:
