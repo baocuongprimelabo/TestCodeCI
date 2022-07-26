@@ -13,7 +13,7 @@ jobs:
     steps:
       - checkout
       - run: php -r "file_exists('.env') || copy('.env.example', '.env');"
-      - run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+      - run: composer install
       - run: chmod -R 777 storage bootstrap/cache
       # run test
       - run: php artisan key:generate
