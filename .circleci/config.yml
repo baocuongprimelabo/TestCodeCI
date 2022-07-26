@@ -20,7 +20,7 @@ jobs:
       - run: mkdir -p database
       - run:  touch database/database.sqlite
       - run: php artisan migrate --seed
-      - run: php artisan test --testsuite=Feature
+      - run: php artisan test --testsuite=Feature 
 
 workflows:
   version: 2
