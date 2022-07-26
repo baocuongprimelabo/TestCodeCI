@@ -21,9 +21,7 @@ jobs:
       - run:  touch database/database.sqlite
       - run: php artisan migrate --seed
       - run: php artisan test --testsuite=Feature
-      - run:
-          name: Check PhpUnit
-          command: ./vendor/bin/phpunit
+
 workflows:
   version: 2
   build-and-deploy:
