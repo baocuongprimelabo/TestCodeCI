@@ -15,6 +15,7 @@ jobs:
       - run: cp .env.example .env
       # run test
       - run: php artisan key:generate
+      - run: php artisan migrate --seed
       - run:
           name: Check PhpUnit
           command: ./vendor/bin/phpunit
