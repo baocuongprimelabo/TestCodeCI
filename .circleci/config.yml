@@ -6,10 +6,10 @@ jobs:
       - image: mysql:5.7
         environment:
           MYSQL_HOST: 127.0.0.1
-          MYSQL_DATABASE: homestead
-          MYSQL_USER: homestead
-          MYSQL_PASSWORD: secret
-          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: forge
+          MYSQL_USER: forge
+          MYSQL_PASSWORD: 
+          MYSQL_ROOT_PASSWORD: 
     steps:
       - checkout
       - run: cp .env.example .env
