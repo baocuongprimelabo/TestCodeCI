@@ -1,4 +1,6 @@
 version: 2
+permissions:
+  contents: read
 jobs:
   build_and_test:
     docker:
