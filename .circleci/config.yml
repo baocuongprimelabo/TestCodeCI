@@ -13,39 +13,8 @@ jobs:
     steps:
       - checkout
       - run: cp .env.example .env
-      # composer cache
-      - restore_cache:
-          keys:
-            - vendor-v1-{{ checksum "composer.lock" }}
-      - run:  composer install
-      - save_cache:
-          key: vendor-v1-{{ checksum "composer.lock" }}
-          paths:
-            - vendor
-      # Yarn
-      - restore_cache:
-          name: Restore yarn cache
-          keys:
-            - yarn-{{ checksum "yarn.lock" }}
-            - yarn-
-      - run: yarn
-      - save_cache:
-          paths:
-            - node_modules
-          key: yarn-{{ checksum "composer.json" }}
-
-      - run:
-          name: Check convention javarscript
-          command: npm run eslint
       # run test
-      - run: php artisan key:generate --env=testing
-      - run:
-          name: Check convention PHP
-          command: phpcs --standard=Framgia app
-      - run:
-          name: Check connection database
-          command: framgia-ci test-connect 127.0.0.1 3306 60
-      - run: php artisan migrate --seed --env=testing
+      - run: php artisan key:generate
       - run:
           name: Check PhpUnit
           command: ./vendor/bin/phpunit
